@@ -15,8 +15,9 @@ class HabitController extends Controller
         return view('habits.index', compact('habits'));
     }
 
-    public function store(): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
+        Habit::create($request->all());
         return redirect()->route('habits.index');
     }
 }
