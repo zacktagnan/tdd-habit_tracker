@@ -1,13 +1,10 @@
 <?php
 
-use App\Models\Habit;
+use App\Http\Controllers\HabitController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/habits', function () {
-    $habits = Habit::all();
-    return view('habits.index', compact('habits'));
-});
+Route::get('/habits', [HabitController::class, 'index'])->name('habits.index');
