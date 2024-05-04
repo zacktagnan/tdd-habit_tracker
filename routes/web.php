@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\Habit;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,6 +8,6 @@ Route::get('/', function () {
 });
 
 Route::get('/habits', function () {
-    $habits = new Collection();
+    $habits = Habit::all();
     return view('habits.index', compact('habits'));
 });
