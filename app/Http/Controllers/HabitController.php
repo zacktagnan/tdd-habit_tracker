@@ -13,4 +13,8 @@ class HabitController extends Controller
         $habits = Habit::all();
         return view('habits.index', compact('habits'));
     }
+
+    public function store()
+    {
+    }
 }
