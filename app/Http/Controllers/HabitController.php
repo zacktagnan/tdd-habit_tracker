@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Habit;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -14,7 +15,8 @@ class HabitController extends Controller
         return view('habits.index', compact('habits'));
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
+        return redirect()->route('habits.index');
     }
 }
