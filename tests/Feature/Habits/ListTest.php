@@ -22,7 +22,7 @@ class ListTest extends TestCase
 
         // Act
         // ------------------------------------------------
-        $response = $this->withoutExceptionHandling()->get('/habits');
+        $response = $this->withoutExceptionHandling()->get(route('habits.index'));
         // ------------------------------------------------
 
         // Assert
