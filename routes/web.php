@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/habits', function () {
-    // ...
+    return view('habits.index');
 });
