@@ -29,7 +29,7 @@ class UpdateTest extends TestCase
         // Assert
         // ------------------------------------------------
         $response->assertRedirect(route('habits.index'));
-        $this->assertDatabaseHas('habits', $habitStored->toArray());
+        $this->assertDatabaseHas('habits', $habitUpdated);
         // ------------------------------------------------
     }
 }

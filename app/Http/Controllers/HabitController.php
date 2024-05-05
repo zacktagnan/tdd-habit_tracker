@@ -21,8 +21,9 @@ class HabitController extends Controller
         return redirect()->route('habits.index');
     }
 
-    public function update(): RedirectResponse
+    public function update(Request $request, Habit $habit): RedirectResponse
     {
+        $habit->update($request->all());
         return redirect()->route('habits.index');
     }
 }
