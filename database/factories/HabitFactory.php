@@ -17,7 +17,8 @@ class HabitFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->sentence(rand(1, 11)),
+            'times_per_day' => rand(1, 255),
         ];
     }
 }
