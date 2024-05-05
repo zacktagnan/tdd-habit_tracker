@@ -3,9 +3,8 @@
 namespace Tests\Feature\Habits;
 
 use Tests\TestCase;
+use App\Models\Habit;
 use PHPUnit\Framework\Attributes\Group;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateTest extends TestCase
 {
@@ -15,21 +14,18 @@ class CreateTest extends TestCase
     {
         // Arrange
         // ------------------------------------------------
-        $habitToStore = [
-            'name' => 'test',
-            'times_per_day' => 3,
-        ];
+        $habitToStore = Habit::factory()->make();
         // ------------------------------------------------
 
         // Act
         // ------------------------------------------------
-        $response = $this->withoutExceptionHandling()->post(route('habits.store'), $habitToStore);
+        $response = $this->withoutExceptionHandling()->post(route('habits.store'), $habitToStore->toArray());
         // ------------------------------------------------
 
         // Assert
         // ------------------------------------------------
         $response->assertRedirect(route('habits.index'));
-        $this->assertDatabaseHas('habits', $habitToStore);
+        $this->assertDatabaseHas('habits', $habitToStore->toArray());
         // ------------------------------------------------
     }
 }
