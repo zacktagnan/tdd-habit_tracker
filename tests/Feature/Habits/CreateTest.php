@@ -28,4 +28,14 @@ class CreateTest extends TestCase
         $this->assertDatabaseHas('habits', $habitToStore->toArray());
         // ------------------------------------------------
     }
+
+    public function test_habits_cannot_be_created_without_name(): void
+    {
+        $habitToStore = Habit::factory()->make([
+            'name' => null,
+        ]);
+
+        $response = $this->post(route('habits.store'), $habitToStore->toArray());
+        $response->assertSessionHasErrors(['name']);
+    }
 }
