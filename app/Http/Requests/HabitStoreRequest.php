@@ -22,7 +22,8 @@ class HabitStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:habits',
+            'name' => 'required|string|max:255|unique:habits',
+            'times_per_day' => 'required|integer',
         ];
     }
 }

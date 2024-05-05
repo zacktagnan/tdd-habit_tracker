@@ -38,4 +38,14 @@ class CreateTest extends TestCase
         $response = $this->post(route('habits.store'), $habitToStore->toArray());
         $response->assertSessionHasErrors(['name']);
     }
+
+    public function test_habits_cannot_be_created_without_times_per_day(): void
+    {
+        $habitToStore = Habit::factory()->make([
+            'times_per_day' => null,
+        ]);
+
+        $response = $this->post(route('habits.store'), $habitToStore->toArray());
+        $response->assertSessionHasErrors(['times_per_day']);
+    }
 }
