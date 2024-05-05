@@ -4,6 +4,7 @@ namespace Tests\Feature\Habits;
 
 use Tests\TestCase;
 use App\Models\Habit;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('habits')]
@@ -29,23 +30,32 @@ class CreateTest extends TestCase
         // ------------------------------------------------
     }
 
-    public function test_habits_cannot_be_created_without_name(): void
+    #[DataProvider('provideBadDataProvider')]
+    public function test_habit_store_validation(string $columnToValidate, array $habit): void
     {
-        $habitToStore = Habit::factory()->make([
-            'name' => null,
-        ]);
-
-        $response = $this->post(route('habits.store'), $habitToStore->toArray());
-        $response->assertSessionHasErrors(['name']);
+        $response = $this->post(route('habits.store'), $habit);
+        $response->assertSessionHasErrors([$columnToValidate]);
     }
 
-    public function test_habits_cannot_be_created_without_times_per_day(): void
+    public static function provideBadDataProvider(): array
     {
-        $habitToStore = Habit::factory()->make([
-            'times_per_day' => null,
-        ]);
+        $habit = Habit::factory()->make();
 
-        $response = $this->post(route('habits.store'), $habitToStore->toArray());
-        $response->assertSessionHasErrors(['times_per_day']);
+        return [
+            'about name column' => [
+                'name',
+                [
+                    ...$habit->toArray(),
+                    'name' => null,
+                ],
+            ],
+            'about times_per_day column' => [
+                'times_per_day',
+                [
+                    ...$habit->toArray(),
+                    'times_per_day' => null,
+                ],
+            ],
+        ];
     }
 }
