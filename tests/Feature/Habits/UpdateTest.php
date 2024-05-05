@@ -6,10 +6,10 @@ use Tests\TestCase;
 use App\Models\Habit;
 use PHPUnit\Framework\Attributes\Group;
 
+#[Group('habits')]
+#[Group('habits_update')]
 class UpdateTest extends TestCase
 {
-    #[Group('habits')]
-    #[Group('habits_update')]
     public function test_habits_can_be_updated(): void
     {
         // Arrange
