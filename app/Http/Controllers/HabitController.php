@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HabitStoreRequest;
 use App\Models\Habit;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,12 +16,8 @@ class HabitController extends Controller
         return view('habits.index', compact('habits'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(HabitStoreRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|unique:habits',
-        ]);
-
         Habit::create($request->all());
         return redirect()->route('habits.index');
     }
