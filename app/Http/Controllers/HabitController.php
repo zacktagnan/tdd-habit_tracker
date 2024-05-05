@@ -17,6 +17,10 @@ class HabitController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $request->validate([
+            'name' => 'required|unique:habits',
+        ]);
+
         Habit::create($request->all());
         return redirect()->route('habits.index');
     }

@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[Group('habits_list')]
 class ListTest extends TestCase
 {
-    public function test_the_habits_index_view_can_be_render_with_list(): void
+    public function test_habits_index_view_can_be_render_with_list(): void
     {
         // Arrange
         // ------------------------------------------------
