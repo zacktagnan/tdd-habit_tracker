@@ -20,4 +20,8 @@ class HabitController extends Controller
         Habit::create($request->all());
         return redirect()->route('habits.index');
     }
+
+    public function update(): void
+    {
+    }
 }
