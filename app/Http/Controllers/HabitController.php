@@ -27,4 +27,8 @@ class HabitController extends Controller
         $habit->update($request->all());
         return redirect()->route('habits.index');
     }
+
+    public function destroy()
+    {
+    }
 }
