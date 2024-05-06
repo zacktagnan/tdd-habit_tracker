@@ -15,6 +15,10 @@ describe('HabitInfo.vue', () => {
         })
     })
 
+    it('displays the habit name', () => {
+        expect(wrapper.find('#name').text()).toBe('Beber agua')
+    })
+
     it('displays the habit executions', () => {
         expect(wrapper.find('#executions').text()).toBe('1 / 3 veces')
     })
