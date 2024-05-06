@@ -5,7 +5,17 @@ export default {
     './resources/views/**/*.blade.php',
   ],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily: {
+            'sans': ['"Montserrat Alternates"', 'Arial', 'sans-serif'],
+        },
+        colors: {
+            'primary': {
+                600: '#227799',
+                400: '#6cc4e7',
+            },
+        },
+    },
   },
   plugins: [],
 }
