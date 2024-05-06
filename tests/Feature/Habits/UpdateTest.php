@@ -7,6 +7,7 @@ use App\Models\Habit;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\Attributes\Group;
+use Tests\DataProviders\HabitDataProvider;
 
 #[Group('habits')]
 #[Group('habits_update')]
@@ -35,7 +36,7 @@ class UpdateTest extends TestCase
         // ------------------------------------------------
     }
 
-    #[DataProviderExternal(CreateTest::class, 'provideBadDataProvider')]
+    #[DataProviderExternal(HabitDataProvider::class, 'provideBadDataProvider')]
     public function test_habit_update_validation(string $columnToValidate, array $habit): void
     {
         $habitStored = Habit::factory()->create();
