@@ -3,6 +3,7 @@ export default {
   content: [
     './storage/framework/views/*.php',
     './resources/views/**/*.blade.php',
+    './resources/**/*.vue',
   ],
   theme: {
     extend: {
@@ -12,7 +13,7 @@ export default {
         colors: {
             'primary': {
                 600: '#227799',
-                400: '#6cc4e7',
+                400: '#52acd0',
             },
         },
     },

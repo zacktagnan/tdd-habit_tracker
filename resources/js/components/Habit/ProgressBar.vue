@@ -7,7 +7,7 @@ const props = defineProps({
     },
 })
 
-const circumference = ref(props.percent) * 2 * Math.PI
+const circumference = 30 * 2 * Math.PI
 </script>
 
 <template>
