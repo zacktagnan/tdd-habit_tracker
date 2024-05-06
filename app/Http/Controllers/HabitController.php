@@ -28,8 +28,9 @@ class HabitController extends Controller
         return redirect()->route('habits.index');
     }
 
-    public function destroy()
+    public function destroy(Habit $habit): RedirectResponse
     {
+        $habit->delete();
         return redirect()->route('habits.index');
     }
 }
