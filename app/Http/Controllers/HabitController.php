@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\HabitStoreRequest;
+use App\Http\Requests\HabitUpdateRequest;
 use App\Models\Habit;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class HabitController extends Controller
@@ -22,7 +22,7 @@ class HabitController extends Controller
         return redirect()->route('habits.index');
     }
 
-    public function update(Request $request, Habit $habit): RedirectResponse
+    public function update(HabitUpdateRequest $request, Habit $habit): RedirectResponse
     {
         $habit->update($request->all());
         return redirect()->route('habits.index');
