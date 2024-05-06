@@ -9,7 +9,7 @@
             <div class="divide-y divide-gray-300/5">
                 <div class="text-base leading-7 text-gray-900">
                     <div class="flex items-center py-2.5">
-                        <habit-info name="Beber agua" executions_count="1" times_per_day="3"></habit-info>
+                        <habit-info name="Beber agua" executions_count="1" times_per_day="3" times_text="{{ __('habits/index.times') }}"></habit-info>
 
                         <execute-button></execute-button>
 

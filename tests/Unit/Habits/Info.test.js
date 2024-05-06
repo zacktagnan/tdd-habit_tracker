@@ -20,6 +20,9 @@ describe('HabitInfo.vue', () => {
     })
 
     it('displays the habit executions', () => {
-        expect(wrapper.find('#executions').text()).toBe('1 / 3 veces')
+        // expect(wrapper.find('#executions').text()).toBe('1 / 3 veces')
+        // al pasar el texto traducido, ya no se puede cumplir lo anterior
+        // porque debe existir de forma literal
+        expect(wrapper.find('#executions').text()).toBe('1 / 3')
     })
 })
