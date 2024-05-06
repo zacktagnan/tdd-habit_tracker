@@ -8,7 +8,9 @@ describe('HabitInfo.vue', () => {
     beforeEach(() => {
         wrapper = mount(HabitInfo, {
             props: {
-                name: 'Beber agua'
+                name: 'Beber agua',
+                executions_count: 1,
+                times_per_day: 3,
             }
         })
     })
