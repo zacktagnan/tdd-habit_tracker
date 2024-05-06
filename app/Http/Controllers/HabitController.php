@@ -30,5 +30,6 @@ class HabitController extends Controller
 
     public function destroy()
     {
+        return redirect()->route('habits.index');
     }
 }
