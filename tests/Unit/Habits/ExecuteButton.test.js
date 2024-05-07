@@ -1,12 +1,12 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { mount } from "@vue/test-utils";
-import ExecutionButton from '@/components/Habit/ExecutionButton.vue'
+import ExecuteButton from '@/components/Habit/ExecuteButton.vue'
 
-describe('ExecutionButton.vue', () => {
+describe('ExecuteButton.vue', () => {
     let wrapper = null
 
     beforeEach(() => {
-        wrapper = mount(ExecutionButton)
+        wrapper = mount(ExecuteButton)
     })
 
     it('renders the execution button', () => {
