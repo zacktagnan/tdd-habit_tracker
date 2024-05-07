@@ -18,9 +18,16 @@ export const useHabitsStore = defineStore('habits', () => {
         list.value[habitIndex].executions_count++
     }
 
+    const percent = (habitIndex) => {
+        return list.value[habitIndex].times_per_day > 0
+            ? Math.floor((list.value[habitIndex].executions_count / list.value[habitIndex].times_per_day) * 100)
+            : 0
+    }
+
     return {
         list,
         fetch,
         newExecution,
+        percent,
     }
 })
