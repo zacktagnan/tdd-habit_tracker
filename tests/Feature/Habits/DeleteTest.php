@@ -4,6 +4,8 @@ namespace Tests\Feature\Habits;
 
 use Tests\TestCase;
 use App\Models\Habit;
+use Illuminate\Http\Request;
+use App\Http\Resources\HabitResource;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('habits')]
@@ -15,19 +17,37 @@ class DeleteTest extends TestCase
         // Arrange
         // ------------------------------------------------
         $habit = Habit::factory()->create();
+        // -> petición API
+        $request = Request::create(route('api-habits.destroy', $habit), 'DELETE');
         // ------------------------------------------------
 
         // Act
         // ------------------------------------------------
-        $response = $this->withoutExceptionHandling()->delete(route('habits.destroy', $habit));
+        // -> petición WEB
+        // $response = $this->withoutExceptionHandling()->delete(route('habits.destroy', $habit));
+        // -> petición API
+        $response = $this->withoutExceptionHandling()->deleteJson(route('api-habits.destroy', $habit));
         // ------------------------------------------------
 
         // Assert
         // ------------------------------------------------
-        $response->assertRedirect(route('habits.index'));
+        // -> petición WEB
+        // $response->assertRedirect(route('habits.index'));
+        // $this->assertDatabaseMissing('habits', [
+        //     'id' => $habit->id,
+        // ]);
+        // -> petición API
         $this->assertDatabaseMissing('habits', [
             'id' => $habit->id,
         ]);
+
+        $habitResource = HabitResource::collection(Habit::withCount('executions')->get());
+
+        $response
+            ->assertStatus(200)
+            ->assertJson(
+                $habitResource->response($request)->getData(true)
+            );
         // ------------------------------------------------
     }
 }

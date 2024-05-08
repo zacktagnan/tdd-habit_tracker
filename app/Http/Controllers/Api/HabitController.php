@@ -27,4 +27,10 @@ class HabitController extends Controller
         $habit->update($request->all());
         return HabitResource::collection(Habit::withCount('executions')->get());
     }
+
+    public function destroy(Habit $habit): JsonResource
+    {
+        $habit->delete();
+        return HabitResource::collection(Habit::withCount('executions')->get());
+    }
 }
