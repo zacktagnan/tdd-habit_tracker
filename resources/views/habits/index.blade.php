@@ -6,7 +6,7 @@
                 <button type="button" class="text-white bg-primary-600 hover:bg-primary-400 transition-all duration-200 px-3.5 py-2 rounded-md">{{ __('habits/index.habit_new') }}</button>
             </div>
 
-            <habit-list times_text="{{ __('habits/index.times') }}" />
+            <habit-list times_per_day_text="{{ __('habits/index.times_per_day') }}" />
         </div>
     </div>
 </x-app-layout>
