@@ -9,7 +9,7 @@ defineProps({
     times_per_day: {
         type: Number,
     },
-    times_text: {
+    times_per_day_text: {
         type: String,
     },
 })
@@ -19,6 +19,6 @@ defineProps({
     <div class="flex flex-col basis-1/2">
         <h2 id="name" class="text-base font-semibold">{{ name }}</h2>
         <small id="executions" class="font-normal text-gray-400">{{ executions_count }} / {{
- times_per_day }} {{ times_text }}</small>
+ times_per_day }} {{ times_per_day_text }}</small>
     </div>
 </template>
