@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/habits', [ApiHabitController::class, 'index'])->name('api-habits.index');
 Route::post('/habits', [ApiHabitController::class, 'store'])->name('api-habits.store');
+Route::put('/habits/{habit}/update', [ApiHabitController::class, 'update'])->name('api-habits.update');

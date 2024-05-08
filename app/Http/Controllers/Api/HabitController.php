@@ -6,6 +6,7 @@ use App\Models\Habit;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HabitResource;
 use App\Http\Requests\HabitStoreRequest;
+use App\Http\Requests\HabitUpdateRequest;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class HabitController extends Controller
@@ -18,6 +19,12 @@ class HabitController extends Controller
     public function store(HabitStoreRequest $request): JsonResource
     {
         Habit::create($request->all());
+        return HabitResource::collection(Habit::withCount('executions')->get());
+    }
+
+    public function update(HabitUpdateRequest $request, Habit $habit): JsonResource
+    {
+        $habit->update($request->all());
         return HabitResource::collection(Habit::withCount('executions')->get());
     }
 }
