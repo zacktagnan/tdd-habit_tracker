@@ -16,21 +16,25 @@ class HabitController extends Controller
         return view('habits.index', compact('habits'));
     }
 
-    public function store(HabitStoreRequest $request): RedirectResponse
-    {
-        Habit::create($request->all());
-        return redirect()->route('habits.index');
-    }
+    // --------------------------------------------------------------
+    //  SIGUIENTE(S) no necesario(s) para la parte con Vue en el Frontend
+    // --------------------------------------------------------------
 
-    public function update(HabitUpdateRequest $request, Habit $habit): RedirectResponse
-    {
-        $habit->update($request->all());
-        return redirect()->route('habits.index');
-    }
+    // public function store(HabitStoreRequest $request): RedirectResponse
+    // {
+    //     Habit::create($request->all());
+    //     return redirect()->route('habits.index');
+    // }
 
-    public function destroy(Habit $habit): RedirectResponse
-    {
-        $habit->delete();
-        return redirect()->route('habits.index');
-    }
+    // public function update(HabitUpdateRequest $request, Habit $habit): RedirectResponse
+    // {
+    //     $habit->update($request->all());
+    //     return redirect()->route('habits.index');
+    // }
+
+    // public function destroy(Habit $habit): RedirectResponse
+    // {
+    //     $habit->delete();
+    //     return redirect()->route('habits.index');
+    // }
 }
