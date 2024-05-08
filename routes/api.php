@@ -8,4 +8,4 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/habits', [ApiHabitController::class, 'index']);
+Route::get('/habits', [ApiHabitController::class, 'index'])->name('api-habits.index');
