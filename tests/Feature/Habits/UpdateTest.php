@@ -58,7 +58,11 @@ class UpdateTest extends TestCase
     {
         $habitStored = Habit::factory()->create();
 
-        $response = $this->put(route('habits.update', $habitStored), $habit);
-        $response->assertSessionHasErrors([$columnToValidate]);
+        // -> petición WEB
+        // $response = $this->put(route('habits.update', $habitStored), $habit);
+        // $response->assertSessionHasErrors([$columnToValidate]);
+        // -> petición API
+        $response = $this->putJson(route('api-habits.update', $habitStored), $habit);
+        $response->assertJsonValidationErrors([$columnToValidate]);
     }
 }

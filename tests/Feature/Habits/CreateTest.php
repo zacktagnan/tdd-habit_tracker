@@ -40,7 +40,11 @@ class CreateTest extends TestCase
     #[DataProviderExternal(HabitDataProvider::class, 'provideBadDataProvider')]
     public function test_habit_store_validation(string $columnToValidate, array $habit): void
     {
-        $response = $this->post(route('habits.store'), $habit);
-        $response->assertSessionHasErrors([$columnToValidate]);
+        // -> petición WEB
+        // $response = $this->post(route('habits.store'), $habit);
+        // $response->assertSessionHasErrors([$columnToValidate]);
+        // -> petición API
+        $response = $this->postJson(route('api-habits.store'), $habit);
+        $response->assertJsonValidationErrors([$columnToValidate]);
     }
 }
