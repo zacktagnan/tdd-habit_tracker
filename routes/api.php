@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/habits', [ApiHabitController::class, 'index'])->name('api-habits.index');
+Route::post('/habits', [ApiHabitController::class, 'store'])->name('api-habits.store');

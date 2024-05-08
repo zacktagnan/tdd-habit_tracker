@@ -21,12 +21,18 @@ class CreateTest extends TestCase
 
         // Act
         // ------------------------------------------------
-        $response = $this->withoutExceptionHandling()->post(route('habits.store'), $habitToStore->toArray());
+        // -> petición WEB
+        // $response = $this->withoutExceptionHandling()->post(route('habits.store'), $habitToStore->toArray());
+        // -> petición API
+        $response = $this->withoutExceptionHandling()->postJson(route('api-habits.store'), $habitToStore->toArray());
         // ------------------------------------------------
 
         // Assert
         // ------------------------------------------------
-        $response->assertRedirect(route('habits.index'));
+        // -> petición WEB
+        // $response->assertRedirect(route('habits.index'));
+        // -> petición API
+        $response->assertStatus(200);
         $this->assertDatabaseHas('habits', $habitToStore->toArray());
         // ------------------------------------------------
     }
