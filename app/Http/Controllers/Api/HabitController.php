@@ -15,9 +15,9 @@ class HabitController extends Controller
         return HabitResource::collection(Habit::withCount('executions')->get());
     }
 
-    public function store(HabitStoreRequest $request): array
+    public function store(HabitStoreRequest $request): JsonResource
     {
         Habit::create($request->all());
-        return [];
+        return HabitResource::collection(Habit::withCount('executions')->get());
     }
 }
