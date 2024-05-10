@@ -26,7 +26,7 @@ fetchHabits()
                 <habit-info :name="habit.name" :executions_count="habit.executions_count"
                     :times_per_day="habit.times_per_day" :times_per_day_text="times_per_day_text" />
 
-                <execute-button></execute-button>
+                <execute-button @new-execution="habits.newExecution(index)" />
 
                 <progress-bar :percent="habits.percent(index)"></progress-bar>
             </div>

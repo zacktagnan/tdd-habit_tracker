@@ -9,8 +9,10 @@ const newExecution = () => {
 </script>
 
 <template>
-    <div id="execute" class="flex basis-1/4 justify-center p-2.5">
+    <div class="flex basis-1/4 justify-center p-2.5">
         <button
-            class="bg-primary-600 hover:bg-primary-400 text-white font-semibold text-2xl px-4 py-2 rounded-lg">+1</button>
+            id="execute"
+            @click="$emit('newExecution')"
+            class="px-4 py-2 text-2xl font-semibold text-white rounded-lg bg-primary-600 hover:bg-primary-400">+1</button>
     </div>
 </template>
