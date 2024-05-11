@@ -4,7 +4,7 @@ import { reactive, ref } from "vue";
 
 export const useHabitsStore = defineStore('habits', () => {
     const list = ref([])
-    const isDialogOpen = ref(false)
+    const isFormDialogOpen = ref(false)
 
     const validationErrors = ref({})
     const formData = reactive({
@@ -39,11 +39,11 @@ export const useHabitsStore = defineStore('habits', () => {
     }
 
     const openDialog = () => {
-        isDialogOpen.value = true
+        isFormDialogOpen.value = true
     }
 
     const closeDialog = () => {
-        isDialogOpen.value = false
+        isFormDialogOpen.value = false
         setTimeout( () => resetErrorsAndForm(), 500)
     }
 
@@ -103,7 +103,7 @@ export const useHabitsStore = defineStore('habits', () => {
 
     return {
         list,
-        isDialogOpen,
+        isFormDialogOpen,
         validationErrors,
         formData,
         fetch,

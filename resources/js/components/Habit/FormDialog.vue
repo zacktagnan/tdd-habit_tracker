@@ -19,7 +19,7 @@ const submitForm = async() => {
 </script>
 
 <template>
-    <TransitionRoot appear="" :show="habits.isDialogOpen" as="template">
+    <TransitionRoot appear="" :show="habits.isFormDialogOpen" as="template">
         <Dialog as="div" @close="habits.closeDialog" class="relative z-10">
             <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
                 leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
