@@ -67,6 +67,14 @@ export const useHabitsStore = defineStore('habits', () => {
         }
     }
 
+    const edit = async (habitIndex) => {
+        formData.id = list.value[habitIndex].id
+        formData.name = list.value[habitIndex].name
+        formData.times_per_day = list.value[habitIndex].times_per_day
+
+        openDialog()
+    }
+
     return {
         list,
         isDialogOpen,
@@ -78,5 +86,6 @@ export const useHabitsStore = defineStore('habits', () => {
         openDialog,
         closeDialog,
         store,
+        edit,
     }
 })

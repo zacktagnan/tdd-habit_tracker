@@ -33,7 +33,7 @@ fetchHabits()
                 <progress-bar :percent="habits.percent(index)"></progress-bar>
 
                 <div>
-                    <habit-edit-button />
+                    <habit-edit-button @edit="habits.edit(index)" />
                     <habit-delete-button />
                 </div>
             </div>
