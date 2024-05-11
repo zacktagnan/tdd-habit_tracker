@@ -33,4 +33,8 @@ class HabitController extends Controller
         $habit->delete();
         return HabitResource::collection(Habit::withCount('executions')->get());
     }
+
+    public function execution(Habit $habit)
+    {
+    }
 }
