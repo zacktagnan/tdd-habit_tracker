@@ -10,6 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Tests\DataProviders\HabitDataProvider;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 
+#[Group('tracker')]
 #[Group('habits')]
 #[Group('habits_update')]
 class UpdateTest extends TestCase

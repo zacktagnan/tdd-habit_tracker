@@ -8,6 +8,7 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\Attributes\Group;
 use Tests\DataProviders\HabitDataProvider;
 
+#[Group('tracker')]
 #[Group('habits')]
 #[Group('habits_create')]
 class CreateTest extends TestCase

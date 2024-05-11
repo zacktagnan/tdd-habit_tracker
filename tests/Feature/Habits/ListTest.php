@@ -8,6 +8,7 @@ use App\Http\Resources\HabitResource;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\Group;
 
+#[Group('tracker')]
 #[Group('habits')]
 #[Group('habits_list')]
 class ListTest extends TestCase

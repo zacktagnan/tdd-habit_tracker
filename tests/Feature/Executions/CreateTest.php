@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Models\Habit;
 use PHPUnit\Framework\Attributes\Group;
 
+#[Group('tracker')]
 #[Group('executions')]
 #[Group('executions_create')]
 class CreateTest extends TestCase

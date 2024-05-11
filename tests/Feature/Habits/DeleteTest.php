@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\HabitResource;
 use PHPUnit\Framework\Attributes\Group;
 
+#[Group('tracker')]
 #[Group('habits')]
 #[Group('habits_delete')]
 class DeleteTest extends TestCase
