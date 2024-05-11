@@ -30,7 +30,7 @@ const store = async() => {
                         <DialogPanel
                             class="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                             <DialogTitle as="h3" class="text-lg font-semibold leading-6 text-gray-900">
-                                Nuevo Habit
+                                {{ habits.formData.id ? 'Edit Habit' : 'New Habit' }}
                             </DialogTitle>
 
                             <div class="mt-2">

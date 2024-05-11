@@ -49,6 +49,7 @@ export const useHabitsStore = defineStore('habits', () => {
 
     const resetErrorsAndForm = () => {
         validationErrors.value = {}
+        formData.id = ''
         formData.name = ''
         formData.times_per_day = ''
     }
