@@ -14,13 +14,13 @@ class CreateTest extends TestCase
     {
         // Arrange
         // ------------------------------------------------
-        $habitToStore = Habit::factory()->make();
+        $habitToStore = Habit::factory()->create();
         // ------------------------------------------------
 
         // Act
         // ------------------------------------------------
         // -> petición API
-        $this->withoutExceptionHandling()->postJson(route('api-habits.habit-execution.store'), $habitToStore->toArray());
+        $this->withoutExceptionHandling()->postJson(route('api-habits.habit-execution.store', $habitToStore));
         // ------------------------------------------------
 
         // Assert

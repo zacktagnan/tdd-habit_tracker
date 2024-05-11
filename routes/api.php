@@ -12,3 +12,4 @@ Route::get('/habits', [ApiHabitController::class, 'index'])->name('api-habits.in
 Route::post('/habits', [ApiHabitController::class, 'store'])->name('api-habits.store');
 Route::put('/habits/{habit}/update', [ApiHabitController::class, 'update'])->name('api-habits.update');
 Route::delete('/habits/{habit}/destroy', [ApiHabitController::class, 'destroy'])->name('api-habits.destroy');
+Route::post('/habits/{habit}/execution', [ApiHabitController::class, 'execution'])->name('api-habits.habit-execution.store');
