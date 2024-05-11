@@ -34,7 +34,7 @@ fetchHabits()
 
                 <div>
                     <habit-edit-button @edit="habits.edit(index)" />
-                    <habit-delete-button />
+                    <habit-delete-button @destroy="habits.destroy(index)" />
                 </div>
             </div>
         </div>
