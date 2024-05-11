@@ -2,6 +2,8 @@
 import HabitInfo from '@/components/Habit/Info.vue'
 import ExecuteButton from '@/components/Habit/ExecuteButton.vue'
 import ProgressBar from '@/components/Habit/ProgressBar.vue'
+import HabitEditButton from '@/components/Habit/EditButton.vue'
+import HabitDeleteButton from '@/components/Habit/DeleteButton.vue'
 import { useHabitsStore } from '@/stores/habits'
 
 defineProps({
@@ -29,6 +31,11 @@ fetchHabits()
                 <execute-button @new-execution="habits.newExecution(index)" />
 
                 <progress-bar :percent="habits.percent(index)"></progress-bar>
+
+                <div>
+                    <habit-edit-button />
+                    <habit-delete-button />
+                </div>
             </div>
         </div>
     </div>
