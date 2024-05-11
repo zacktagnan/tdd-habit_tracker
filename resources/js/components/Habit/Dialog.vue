@@ -7,9 +7,13 @@ const habits = useHabitsStore()
 
 const loading = ref(false)
 
-const store = async() => {
+const submitForm = async() => {
     loading.value = true
-    await habits.store()
+    if (habits.formData.id) {
+        await habits.update()
+    } else {
+        await habits.store()
+    }
     loading.value = false
 }
 </script>
@@ -60,7 +64,7 @@ const store = async() => {
                             </div>
 
                             <div class="flex justify-end mt-6">
-                                <button :disabled="loading" @click="store" type="button"
+                                <button :disabled="loading" @click="submitForm" type="button"
                                     class="inline-flex items-center bg-primary-600 px-3.5 py-2 rounded-md text-sm font-medium text-white">
                                     <span v-if="!loading" class="mx-1">Save</span>
 

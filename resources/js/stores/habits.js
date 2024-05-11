@@ -76,6 +76,20 @@ export const useHabitsStore = defineStore('habits', () => {
         openDialog()
     }
 
+    const update = async () => {
+        try {
+            let response = await axios.put(`/api/habits/${formData.id}/update`, formData)
+
+            list.value = response.data.data
+            closeDialog()
+        } catch (error) {
+            console.log(error)
+            if (error.response.status == 422) {
+                validationErrors.value = error.response.data.errors
+            }
+        }
+    }
+
     return {
         list,
         isDialogOpen,
@@ -88,5 +102,6 @@ export const useHabitsStore = defineStore('habits', () => {
         closeDialog,
         store,
         edit,
+        update,
     }
 })
