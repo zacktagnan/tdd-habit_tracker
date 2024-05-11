@@ -43,8 +43,8 @@ export const useHabitsStore = defineStore('habits', () => {
     }
 
     const closeDialog = () => {
-        resetErrorsAndForm()
         isDialogOpen.value = false
+        setTimeout( () => resetErrorsAndForm(), 500)
     }
 
     const resetErrorsAndForm = () => {

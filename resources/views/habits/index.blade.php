@@ -10,6 +10,6 @@
             <habit-list times_per_day_text="{{ __('habits/index.times_per_day') }}" />
         </div>
 
-        <habit-dialog />
+        <habit-form-dialog />
     </div>
 </x-app-layout>
