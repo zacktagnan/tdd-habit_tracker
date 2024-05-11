@@ -36,5 +36,6 @@ class HabitController extends Controller
 
     public function execution(Habit $habit)
     {
+        $habit->executions()->create();
     }
 }
