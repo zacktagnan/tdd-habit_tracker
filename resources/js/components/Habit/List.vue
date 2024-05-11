@@ -18,6 +18,12 @@ const fetchHabits = async () => {
     await habits.fetch()
 }
 
+const deleteHabitConfirmation = (habitIndex) => {
+    if (confirm('Are you sure you want to DELETE it?')) {
+        habits.destroy(habitIndex)
+    }
+}
+
 fetchHabits()
 </script>
 
@@ -34,7 +40,7 @@ fetchHabits()
 
                 <div>
                     <habit-edit-button @edit="habits.edit(index)" />
-                    <habit-delete-button @destroy="habits.destroy(index)" />
+                    <habit-delete-button @destroy="deleteHabitConfirmation(index)" />
                 </div>
             </div>
         </div>
