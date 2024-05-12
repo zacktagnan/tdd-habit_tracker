@@ -5,6 +5,9 @@ import { reactive, ref } from "vue";
 export const useHabitsStore = defineStore('habits', () => {
     const list = ref([])
     const isFormDialogOpen = ref(false)
+    const isConfirmDialogOpen = ref(false)
+    const confirmIndex = ref('')
+    const confirmMessage = ref('')
 
     const validationErrors = ref({})
     const formData = reactive({
@@ -44,7 +47,15 @@ export const useHabitsStore = defineStore('habits', () => {
 
     const closeFormDialog = () => {
         isFormDialogOpen.value = false
-        setTimeout( () => resetErrorsAndForm(), 500)
+        setTimeout(() => resetErrorsAndForm(), 500)
+    }
+
+    const openConfirmDialog = () => {
+        isConfirmDialogOpen.value = true
+    }
+
+    const closeConfirmDialog = () => {
+        isConfirmDialogOpen.value = false
     }
 
     const resetErrorsAndForm = () => {
@@ -58,7 +69,10 @@ export const useHabitsStore = defineStore('habits', () => {
         try {
             let response = await axios.post('/api/habits', formData)
 
-            list.value = response.data.data
+            // Excepto la primera carga del DATA desde el FETCH, en los demás,
+            // si el ORDER de la consulta es el de DESC, habrá que establecer
+            // el REVERSE en esta carga para respetar el ORDER inicial
+            list.value = response.data.data.reverse()
             closeFormDialog()
         } catch (error) {
             console.log(error)
@@ -68,7 +82,7 @@ export const useHabitsStore = defineStore('habits', () => {
         }
     }
 
-    const edit = async (habitIndex) => {
+    const edit = (habitIndex) => {
         formData.id = list.value[habitIndex].id
         formData.name = list.value[habitIndex].name
         formData.times_per_day = list.value[habitIndex].times_per_day
@@ -80,7 +94,7 @@ export const useHabitsStore = defineStore('habits', () => {
         try {
             let response = await axios.put(`/api/habits/${formData.id}/update`, formData)
 
-            list.value = response.data.data
+            list.value = response.data.data.reverse()
             closeFormDialog()
         } catch (error) {
             console.log(error)
@@ -90,20 +104,31 @@ export const useHabitsStore = defineStore('habits', () => {
         }
     }
 
-    const destroy = async (habitIndex) => {
+    // const destroy = async (habitIndex) => {
+    const destroy = async () => {
         try {
-            let response = await axios.delete(`/api/habits/${list.value[habitIndex].id}/destroy`)
+            let response = await axios.delete(`/api/habits/${confirmIndex.value}/destroy`)
 
-            list.value = response.data.data
-            closeFormDialog()
+            list.value = response.data.data.reverse()
+            closeConfirmDialog()
         } catch (error) {
             console.log(error)
         }
     }
 
+    const confirm = (habitIndex) => {
+        confirmIndex.value = list.value[habitIndex].id
+        confirmMessage.value = list.value[habitIndex].name
+
+        openConfirmDialog()
+    }
+
     return {
         list,
         isFormDialogOpen,
+        isConfirmDialogOpen,
+        confirmIndex,
+        confirmMessage,
         validationErrors,
         formData,
         fetch,
@@ -111,9 +136,12 @@ export const useHabitsStore = defineStore('habits', () => {
         percent,
         openFormDialog,
         closeFormDialog,
+        openConfirmDialog,
+        closeConfirmDialog,
         store,
         edit,
         update,
         destroy,
+        confirm,
     }
 })

@@ -22,6 +22,7 @@ const deleteHabitConfirmation = (habitIndex) => {
     if (confirm('Are you sure you want to DELETE it?')) {
         habits.destroy(habitIndex)
     }
+    // --------------------------------------------------------
 }
 
 fetchHabits()
@@ -40,7 +41,8 @@ fetchHabits()
 
                 <div>
                     <habit-edit-button @edit="habits.edit(index)" />
-                    <habit-delete-button @destroy="deleteHabitConfirmation(index)" />
+                    <!-- <habit-delete-button @destroy="deleteHabitConfirmation(index)" /> -->
+                    <habit-delete-button @destroy="habits.confirm(index)" />
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@ class HabitController extends Controller
 {
     public function index(): JsonResource
     {
-        return HabitResource::collection(Habit::withCount('executions')->get());
+        return HabitResource::collection(Habit::withCount('executions')->latest()->get());
     }
 
     public function store(HabitStoreRequest $request): JsonResource
