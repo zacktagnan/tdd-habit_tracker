@@ -39,4 +39,16 @@ describe('Habits Store', () => {
 
         expect(habits.list[habitIndex].executions_count).toBe(3)
     })
+
+    it('opens the habit form dialog', () => {
+        habits.openFormDialog()
+
+        expect(habits.isFormDialogOpen).toBe(true)
+    })
+
+    it('closes the habit form dialog', () => {
+        habits.closeFormDialog()
+
+        expect(habits.isFormDialogOpen).toBe(false)
+    })
 })
