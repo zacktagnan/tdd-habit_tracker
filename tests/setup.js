@@ -34,11 +34,36 @@ export const requestHandlers = [
             status: 200,
         })
     }),
+
     // rest.post('/api/habits/:habit/execution', (req, res, ctx) => {
     //     return res(ctx.status(200), ctx.json(habits))
     // }),
     http.post('/api/habits/:habit/execution', () => {
         return HttpResponse.json({}, {
+            status: 200,
+        })
+    }),
+
+    // rest.post('/api/habits', (req, res, ctx) => {
+    //     const { name, times_per_day } = req.json()
+    //     habits.data.push({
+    //         id: habits.data.length + 1,
+    //         name: name,
+    //         times_per_day: times_per_day,
+    //         executions_count: 0,
+    //     })
+    //     return res(ctx.status(200), ctx.json(habits))
+    // }),
+    http.post('/api/habits', async ({ request }) => {
+        const habit = await request.json()
+        const { name, times_per_day } = habit
+        habits.data.push({
+            id: habits.data.length + 1,
+            name: name,
+            times_per_day: times_per_day,
+            executions_count: 0,
+        })
+        return HttpResponse.json(habits, {
             status: 200,
         })
     }),

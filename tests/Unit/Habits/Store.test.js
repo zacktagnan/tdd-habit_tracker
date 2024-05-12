@@ -63,4 +63,22 @@ describe('Habits Store', () => {
 
         expect(habits.isConfirmDialogOpen).toBe(false)
     })
+
+    it('opens the edit habit form dialog with the correct form data', () => {
+        habits.edit(habitIndex)
+
+        expect(habits.formData.name).toBe(habits.list[habitIndex].name)
+        expect(habits.formData.times_per_day).toBe(habits.list[habitIndex].times_per_day)
+    })
+
+    it('clears the form data after creating a new habit', async () => {
+        habits.formData.name = 'Test'
+        habits.formData.times_per_day = 1
+
+        await habits.store()
+        habits.resetErrorsAndForm()
+
+        expect(habits.formData.name).toBe('')
+        expect(habits.formData.times_per_day).toBe('')
+    })
 })

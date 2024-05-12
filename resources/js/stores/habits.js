@@ -138,6 +138,7 @@ export const useHabitsStore = defineStore('habits', () => {
         closeFormDialog,
         openConfirmDialog,
         closeConfirmDialog,
+        resetErrorsAndForm,
         store,
         edit,
         update,
