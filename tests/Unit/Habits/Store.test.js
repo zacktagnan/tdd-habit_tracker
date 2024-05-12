@@ -51,4 +51,16 @@ describe('Habits Store', () => {
 
         expect(habits.isFormDialogOpen).toBe(false)
     })
+
+    it('opens the habit confirm dialog', () => {
+        habits.openConfirmDialog()
+
+        expect(habits.isConfirmDialogOpen).toBe(true)
+    })
+
+    it('closes the habit confirm dialog', () => {
+        habits.closeConfirmDialog()
+
+        expect(habits.isConfirmDialogOpen).toBe(false)
+    })
 })
