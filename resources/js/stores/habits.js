@@ -38,11 +38,11 @@ export const useHabitsStore = defineStore('habits', () => {
             : 0
     }
 
-    const openDialog = () => {
+    const openFormDialog = () => {
         isFormDialogOpen.value = true
     }
 
-    const closeDialog = () => {
+    const closeFormDialog = () => {
         isFormDialogOpen.value = false
         setTimeout( () => resetErrorsAndForm(), 500)
     }
@@ -59,7 +59,7 @@ export const useHabitsStore = defineStore('habits', () => {
             let response = await axios.post('/api/habits', formData)
 
             list.value = response.data.data
-            closeDialog()
+            closeFormDialog()
         } catch (error) {
             console.log(error)
             if (error.response.status == 422) {
@@ -73,7 +73,7 @@ export const useHabitsStore = defineStore('habits', () => {
         formData.name = list.value[habitIndex].name
         formData.times_per_day = list.value[habitIndex].times_per_day
 
-        openDialog()
+        openFormDialog()
     }
 
     const update = async () => {
@@ -81,7 +81,7 @@ export const useHabitsStore = defineStore('habits', () => {
             let response = await axios.put(`/api/habits/${formData.id}/update`, formData)
 
             list.value = response.data.data
-            closeDialog()
+            closeFormDialog()
         } catch (error) {
             console.log(error)
             if (error.response.status == 422) {
@@ -95,7 +95,7 @@ export const useHabitsStore = defineStore('habits', () => {
             let response = await axios.delete(`/api/habits/${list.value[habitIndex].id}/destroy`)
 
             list.value = response.data.data
-            closeDialog()
+            closeFormDialog()
         } catch (error) {
             console.log(error)
         }
@@ -109,8 +109,8 @@ export const useHabitsStore = defineStore('habits', () => {
         fetch,
         newExecution,
         percent,
-        openDialog,
-        closeDialog,
+        openFormDialog,
+        closeFormDialog,
         store,
         edit,
         update,
