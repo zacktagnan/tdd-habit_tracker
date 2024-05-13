@@ -90,6 +90,34 @@ export const requestHandlers = [
             status: 200,
         })
     }),
+
+    // rest.put('/api/habits/:habit/update', async (req, res, ctx) => {
+    //     const { name, times_per_day } = await req.json()
+    //     // ini :: considerando validaciones también ::::::::::::::
+    //     if (name == '' || times_per_day == '') {
+    //         return res(ctx.status(422), ctx.json(validationErrors))
+    //     }
+    //     // fin :::::::::::::::::::::::::::::::::::::::::::::::::::
+    //     habits.data[0].name = name
+    //     habits.data[0].times_per_day = times_per_day
+    //     return res(ctx.status(200), ctx.json(habits))
+    // }),
+    http.put('/api/habits/:habit/update', async ({ request }) => {
+        const habit = await request.json()
+        const { name, times_per_day } = habit
+        // ini :: considerando validaciones también ::::::::::::::
+        if (name == '' || times_per_day == '') {
+            return HttpResponse.json(validationErrors, {
+                status: 422,
+            })
+        }
+        // fin :::::::::::::::::::::::::::::::::::::::::::::::::::
+        habits.data[0].name = name
+        habits.data[0].times_per_day = times_per_day
+        return HttpResponse.json(habits, {
+            status: 200,
+        })
+    }),
 ]
 
 const server = setupServer(...requestHandlers)

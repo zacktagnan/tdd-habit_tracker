@@ -88,4 +88,14 @@ describe('Habits Store', () => {
         expect(habits.validationErrors.name.length).toBe(1)
         expect(habits.validationErrors.times_per_day.length).toBe(1)
     })
+
+    it('clears the form data after updating an habit', async () => {
+        habits.edit(habitIndex)
+
+        await habits.update()
+        habits.resetErrorsAndForm()
+
+        expect(habits.formData.name).toBe('')
+        expect(habits.formData.times_per_day).toBe('')
+    })
 })
