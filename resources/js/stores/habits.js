@@ -75,7 +75,7 @@ export const useHabitsStore = defineStore('habits', () => {
             list.value = response.data.data.reverse()
             closeFormDialog()
         } catch (error) {
-            console.log(error)
+            //console.log(error)
             if (error.response.status == 422) {
                 validationErrors.value = error.response.data.errors
             }
@@ -97,7 +97,7 @@ export const useHabitsStore = defineStore('habits', () => {
             list.value = response.data.data.reverse()
             closeFormDialog()
         } catch (error) {
-            console.log(error)
+            //console.log(error)
             if (error.response.status == 422) {
                 validationErrors.value = error.response.data.errors
             }
