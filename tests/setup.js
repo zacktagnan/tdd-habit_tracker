@@ -14,6 +14,17 @@ const habits = {
     ],
 }
 
+const validationErrors = {
+    errors: {
+        name: [
+            'The name field is required.'
+        ],
+        times_per_day: [
+            'The times per day field is required.'
+        ],
+    },
+}
+
 export const requestHandlers = [
     // rest.get('http://localhost:3000/api/habits', (req, res, ctx) => {
     //     return res(ctx.status(200), ctx.json(habits))
@@ -44,8 +55,13 @@ export const requestHandlers = [
         })
     }),
 
-    // rest.post('/api/habits', (req, res, ctx) => {
-    //     const { name, times_per_day } = req.json()
+    // rest.post('/api/habits', async (req, res, ctx) => {
+    //     const { name, times_per_day } = await req.json()
+    //     // ini :: considerando validaciones también ::::::::::::::
+    //     if (name == '' || times_per_day == '') {
+    //         return res(ctx.status(422), ctx.json(validationErrors))
+    //     }
+    //     // fin :::::::::::::::::::::::::::::::::::::::::::::::::::
     //     habits.data.push({
     //         id: habits.data.length + 1,
     //         name: name,
@@ -57,6 +73,13 @@ export const requestHandlers = [
     http.post('/api/habits', async ({ request }) => {
         const habit = await request.json()
         const { name, times_per_day } = habit
+        // ini :: considerando validaciones también ::::::::::::::
+        if (name == '' || times_per_day == '') {
+            return HttpResponse.json(validationErrors, {
+                status: 422,
+            })
+        }
+        // fin :::::::::::::::::::::::::::::::::::::::::::::::::::
         habits.data.push({
             id: habits.data.length + 1,
             name: name,
