@@ -7,7 +7,7 @@ export const useHabitsStore = defineStore('habits', () => {
     const isFormDialogOpen = ref(false)
     const isConfirmDialogOpen = ref(false)
     const confirmIndex = ref('')
-    const confirmMessage = ref('')
+    const confirmHabitName = ref('')
 
     const validationErrors = ref({})
     const formData = reactive({
@@ -120,7 +120,7 @@ export const useHabitsStore = defineStore('habits', () => {
 
     const confirm = (habitIndex) => {
         confirmIndex.value = list.value[habitIndex].id
-        confirmMessage.value = list.value[habitIndex].name
+        confirmHabitName.value = list.value[habitIndex].name
 
         openConfirmDialog()
     }
@@ -130,7 +130,7 @@ export const useHabitsStore = defineStore('habits', () => {
         isFormDialogOpen,
         isConfirmDialogOpen,
         confirmIndex,
-        confirmMessage,
+        confirmHabitName,
         validationErrors,
         formData,
         fetch,

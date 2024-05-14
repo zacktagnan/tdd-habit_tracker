@@ -34,13 +34,17 @@ const submitForm = async() => {
                         <DialogPanel
                             class="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                             <DialogTitle as="h3" class="text-lg font-semibold leading-6 text-gray-900">
-                                {{ habits.formData.id ? 'Edit Habit' : 'New Habit' }}
+                                {{
+                                    habits.formData.id
+                                        ? $t('habits.index.form.update_section_label')
+                                        : $t('habits.index.form.store_section_label')
+                                }}
                             </DialogTitle>
 
                             <div class="mt-2">
                                 <div class="mt-4">
                                     <label for="name" class="block text-sm font-medium text-gray-700">
-                                        Name
+                                        {{ $t('habits.index.form.name_label_input') }}
                                     </label>
                                     <input type="text" v-model="habits.formData.name" name="name"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-primary-400">
@@ -52,7 +56,7 @@ const submitForm = async() => {
 
                                 <div class="mt-4">
                                     <label for="times_per_day" class="block text-sm font-medium text-gray-700">
-                                        Times per Day
+                                        {{ $t('habits.index.form.times_per_day_label_input') }}
                                     </label>
                                     <input type="text" v-model="habits.formData.times_per_day" name="times_per_day"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-primary-400">
@@ -66,7 +70,13 @@ const submitForm = async() => {
                             <div class="flex justify-end mt-6">
                                 <button :disabled="loading" @click="submitForm" type="button"
                                     class="inline-flex items-center bg-primary-600 px-3.5 py-2 rounded-md text-sm font-medium text-white">
-                                    <span v-if="!loading" class="mx-1">Save</span>
+                                    <span v-if="!loading" class="mx-1">
+                                        {{
+                                            habits.formData.id
+                                                ? $t('habits.index.button.update')
+                                                : $t('habits.index.button.store')
+                                        }}
+                                    </span>
 
                                     <svg v-if="loading" class="w-5 h-5 ml-2 mr-2 text-white animate-spin"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

@@ -35,24 +35,26 @@ const confirmForm = () => {
                         <DialogPanel
                             class="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-red-200 shadow-xl rounded-2xl">
                             <DialogTitle as="h3" class="text-lg font-semibold leading-6 text-red-700">
-                                Confirmation
+                                {{ $t('habits.index.confirm.confirm_section_label') }}
                             </DialogTitle>
 
                             <div class="mt-2">
                                 <div>
-                                    <p>Do you really DELETE this habit?</p>
-                                    <p class="mt-1 italic font-semibold text-center">{{ habits.confirmMessage }}</p>
+                                    <p>{{ $t('habits.index.confirm.question') }}</p>
+                                    <p class="mt-1 italic font-semibold text-center">{{ habits.confirmHabitName }}</p>
                                 </div>
                             </div>
 
                             <div class="flex justify-end mt-2">
-                                <button :disabled="loading" @click="cancelForm" type="button"
+                                <button :title="$t('habits.index.button.cancel')" :disabled="loading"
+                                    @click="cancelForm" type="button"
                                     class="inline-flex items-center bg-gray-600 px-3.5 py-2 rounded-md text-xs font-medium text-white">
-                                    <span class="mx-1">Cancel</span>
+                                    <span class="mx-1">{{ $t('habits.index.button.cancel') }}</span>
                                 </button>
-                                <button :disabled="loading" @click="confirmForm" type="button"
+                                <button :title="$t('habits.index.button.confirm')" :disabled="loading"
+                                    @click="confirmForm" type="button"
                                     class="ml-2 inline-flex items-center bg-red-600 px-3.5 py-2 rounded-md text-xs font-medium text-white">
-                                    <span v-if="!loading" class="mx-1">Confirm</span>
+                                    <span v-if="!loading" class="mx-1">{{ $t('habits.index.button.confirm') }}</span>
 
                                     <svg v-if="loading" class="w-5 h-5 ml-2 mr-2 text-white animate-spin"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

@@ -6,7 +6,6 @@ const habits = useHabitsStore()
 
 <template>
     <button
-        title="Delete"
         @click="$emit('destroy')"
         class="text-primary-600 hover:text-primary-400"
     >

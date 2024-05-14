@@ -6,7 +6,6 @@ const habits = useHabitsStore()
 
 <template>
     <button
-        title="Update"
         @click="$emit('edit')"
         class="text-primary-600 hover:text-primary-400"
     >
