@@ -13,7 +13,8 @@ const cancelForm = () => {
 
 const confirmForm = () => {
     loading.value = true
-    habits.destroy()
+    // habits.destroy()
+    habits.destroy(habits.confirmIndex)
     loading.value = false
 }
 </script>

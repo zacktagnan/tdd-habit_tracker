@@ -118,6 +118,17 @@ export const requestHandlers = [
             status: 200,
         })
     }),
+
+    // rest.delete('/api/habits/:habit/destroy', async (req, res, ctx) => {
+    //     habits.data.shift()
+    //     return res(ctx.status(200), ctx.json(habits))
+    // }),
+    http.delete('/api/habits/:habit/destroy', async () => {
+        habits.data.shift()
+        return HttpResponse.json(habits, {
+            status: 200,
+        })
+    }),
 ]
 
 const server = setupServer(...requestHandlers)

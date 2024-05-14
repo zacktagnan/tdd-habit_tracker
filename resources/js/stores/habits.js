@@ -105,14 +105,16 @@ export const useHabitsStore = defineStore('habits', () => {
     }
 
     // const destroy = async (habitIndex) => {
-    const destroy = async () => {
+    // const destroy = async () => {
+    const destroy = async (index) => {
         try {
-            let response = await axios.delete(`/api/habits/${confirmIndex.value}/destroy`)
+            // let response = await axios.delete(`/api/habits/${confirmIndex.value}/destroy`)
+            let response = await axios.delete(`/api/habits/${index}/destroy`)
 
             list.value = response.data.data.reverse()
             closeConfirmDialog()
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
