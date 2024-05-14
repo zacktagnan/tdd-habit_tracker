@@ -48,12 +48,12 @@ const confirmForm = () => {
                             <div class="flex justify-end mt-2">
                                 <button :title="$t('habits.index.button.cancel')" :disabled="loading"
                                     @click="cancelForm" type="button"
-                                    class="inline-flex items-center bg-gray-600 px-3.5 py-2 rounded-md text-xs font-medium text-white">
+                                    class="inline-flex items-center bg-gray-800 hover:bg-gray-600 px-3.5 py-2 rounded-md text-xs font-medium text-white">
                                     <span class="mx-1">{{ $t('habits.index.button.cancel') }}</span>
                                 </button>
                                 <button :title="$t('habits.index.button.confirm')" :disabled="loading"
                                     @click="confirmForm" type="button"
-                                    class="ml-2 inline-flex items-center bg-red-600 px-3.5 py-2 rounded-md text-xs font-medium text-white">
+                                    class="ml-2 inline-flex items-center bg-red-800 hover:bg-red-600 px-3.5 py-2 rounded-md text-xs font-medium text-white">
                                     <span v-if="!loading" class="mx-1">{{ $t('habits.index.button.confirm') }}</span>
 
                                     <svg v-if="loading" class="w-5 h-5 ml-2 mr-2 text-white animate-spin"
