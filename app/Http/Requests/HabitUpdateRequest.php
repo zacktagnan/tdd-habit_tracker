@@ -25,7 +25,7 @@ class HabitUpdateRequest extends FormRequest
         return [
             // 'name' => 'required|string|max:255|unique:habits,name,' . $this->id,
             'name' => 'required|string|max:255|unique:' . Habit::class . ',name,' . $this->id,
-            'times_per_day' => 'required|integer',
+            'times_per_day' => 'required|integer|min:1',
         ];
     }
 }

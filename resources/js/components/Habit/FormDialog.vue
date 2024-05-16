@@ -35,13 +35,15 @@ const submitForm = async() => {
                             class="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                             <DialogTitle as="h3" class="text-lg font-semibold leading-6 text-gray-900">
                                 {{
-                                    habits.formData.id
-                                        ? $t('habits.index.form.update_section_label')
-                                        : $t('habits.index.form.store_section_label')
+                                habits.formData.id
+                                ? $t('habits.index.form.update_section_label')
+                                : $t('habits.index.form.store_section_label')
                                 }}
                             </DialogTitle>
 
                             <div class="mt-2">
+                                <p class="text-center">en Vue: {{ $t('validation.required', {'attribute': 'SALUDO'})
+                                    }}</p>
                                 <div class="mt-4">
                                     <label for="name" class="block text-sm font-medium text-gray-700">
                                         {{ $t('habits.index.form.name_label_input') }}
@@ -50,7 +52,10 @@ const submitForm = async() => {
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-primary-400">
                                     <span v-if="habits.validationErrors.hasOwnProperty('name')"
                                         class="text-xs text-red-600">
-                                        {{ habits.validationErrors.name[0] }}
+                                        <!-- => The specific message error received but not translated on the current language -->
+                                        <!-- {{ habits.validationErrors.name[0] }} -->
+                                        <!-- => Showing a generic message error if a validation error message is received for this property -->
+                                        {{ $t('habits.validation.name', { attribute: 'name' }) }}
                                     </span>
                                 </div>
 
@@ -62,22 +67,24 @@ const submitForm = async() => {
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-primary-400">
                                     <span v-if="habits.validationErrors.hasOwnProperty('times_per_day')"
                                         class="text-xs text-red-600">
+                                        <!-- => Specific validation message error not translated -->
                                         {{ habits.validationErrors.times_per_day[0] }}
+                                        <!-- => Generic validation message error -->
+                                        <!-- {{ $t('habits.validation.times_per_day', { attribute: 'times_per_day' }) }} -->
                                     </span>
                                 </div>
                             </div>
 
                             <div class="flex justify-end mt-6">
-                                <button :disabled="loading" @click="submitForm" type="button"
-                                    :title="habits.formData.id
+                                <button :disabled="loading" @click="submitForm" type="button" :title="habits.formData.id
                                         ? $t('habits.index.button.update')
                                         : $t('habits.index.button.store')"
                                     class="inline-flex items-center bg-primary-600 hover:bg-primary-400 px-3.5 py-2 rounded-md text-sm font-medium text-white">
                                     <span v-if="!loading" class="mx-1">
                                         {{
-                                            habits.formData.id
-                                                ? $t('habits.index.button.update')
-                                                : $t('habits.index.button.store')
+                                        habits.formData.id
+                                        ? $t('habits.index.button.update')
+                                        : $t('habits.index.button.store')
                                         }}
                                     </span>
 

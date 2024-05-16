@@ -23,7 +23,7 @@ class HabitStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|unique:habits',
-            'times_per_day' => 'required|integer',
+            'times_per_day' => 'required|integer|min:1',
         ];
     }
 }

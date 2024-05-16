@@ -3,6 +3,13 @@
 use App\Http\Controllers\HabitController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+})->name('switch.locale');
+
 Route::get('/', function () {
     return view('welcome');
 });
