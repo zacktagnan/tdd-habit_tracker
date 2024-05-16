@@ -31,6 +31,7 @@ class HabitController extends Controller
     public function destroy(Habit $habit): JsonResource
     {
         $habit->delete();
+        $habit->executions()->delete();
         return HabitResource::collection(Habit::withCount('executions')->get());
     }
 

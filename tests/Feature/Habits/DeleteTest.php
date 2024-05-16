@@ -13,13 +13,16 @@ use PHPUnit\Framework\Attributes\Group;
 #[Group('habits_delete')]
 class DeleteTest extends TestCase
 {
-    public function test_habits_can_be_deleted(): void
+    // public function test_habits_can_be_deleted(): void
+    public function test_habits_can_be_deleted_with_their_executions(): void
     {
         // Arrange
         // ------------------------------------------------
         $habit = Habit::factory()->create();
         // -> petición API
         $request = Request::create(route('api-habits.destroy', $habit), 'DELETE');
+
+        $habit->executions()->create();
         // ------------------------------------------------
 
         // Act
@@ -40,6 +43,10 @@ class DeleteTest extends TestCase
         // -> petición API
         $this->assertDatabaseMissing('habits', [
             'id' => $habit->id,
+        ]);
+
+        $this->assertDatabaseMissing('executions', [
+            'habit_id' => $habit->id,
         ]);
 
         $habitResource = HabitResource::collection(Habit::withCount('executions')->get());
